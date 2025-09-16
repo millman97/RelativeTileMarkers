@@ -200,4 +200,34 @@ public interface RelativeTileConfig extends Config
             section = sectionC
     )
     default int fillAlphaC() { return 100; }
+
+    @ConfigItem(
+            keyName = "useTrueTileA",
+            name = "Use True Tile A",
+            description = "Highlight relative to true tile instead of character tile for set A",
+            section = sectionA,
+            position = 6
+    )
+    default boolean useTrueTileA() { return false; }
+
+    @ConfigItem(
+            keyName = "useTrueTileB",
+            name = "Use True Tile B",
+            description = "Highlight relative to true tile instead of character tile for set B",
+            section = sectionB,
+            position = 6
+    )
+    default boolean useTrueTileB() { return false; }
+
+    @ConfigItem(
+            keyName = "useTrueTileC",
+            name = "Use True Tile C",
+            description = "Highlight relative to true tile instead of character tile for set C",
+            section = sectionC,
+            position = 6
+    )
+    default boolean useTrueTileC() { return false; }
+
 }
+
+
