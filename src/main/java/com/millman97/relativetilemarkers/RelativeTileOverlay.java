@@ -31,22 +31,24 @@ public class RelativeTileOverlay extends Overlay
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        drawRelativeTiles(graphics, config.tilesA(), config.fillColorA(), config.fillAlphaA(), config.borderColorA(), config.borderWidthA(), config.drawOutlineA());
-        drawRelativeTiles(graphics, config.tilesB(), config.fillColorB(), config.fillAlphaB(), config.borderColorB(), config.borderWidthB(), config.drawOutlineB());
-        drawRelativeTiles(graphics, config.tilesC(), config.fillColorC(), config.fillAlphaC(), config.borderColorC(), config.borderWidthC(), config.drawOutlineC());
+        drawRelativeTiles(graphics, config.tilesA(), config.fillColorA(), config.fillAlphaA(), config.borderColorA(), config.borderWidthA(), config.drawOutlineA(), config.useTrueTileA());
+        drawRelativeTiles(graphics, config.tilesB(), config.fillColorB(), config.fillAlphaB(), config.borderColorB(), config.borderWidthB(), config.drawOutlineB(), config.useTrueTileB());
+        drawRelativeTiles(graphics, config.tilesC(), config.fillColorC(), config.fillAlphaC(), config.borderColorC(), config.borderWidthC(), config.drawOutlineC(), config.useTrueTileC());
 
         return null;
     }
 
-    private void drawRelativeTiles(Graphics2D graphics, String input, Color fill, int fillAlpha, Color border, double borderWidth, boolean drawOutline)
+    private void drawRelativeTiles(Graphics2D graphics, String input, Color fill, int fillAlpha, Color border, double borderWidth, boolean drawOutline, boolean useTrueTile)
     {
         if (input == null || input.isEmpty())
         {
             return;
         }
 
-        LocalPoint playerLocation = client.getLocalPlayer().getLocalLocation();
-        WorldPoint base = WorldPoint.fromLocal(client, playerLocation);
+        WorldPoint base = useTrueTile
+                ? client.getLocalPlayer().getWorldLocation()
+                : WorldPoint.fromLocal(client, client.getLocalPlayer().getLocalLocation());
+
         List<WorldPoint> points = RelativeTileParser.parse(input, base);
 
         for (WorldPoint worldPoint : points)
@@ -78,4 +80,5 @@ public class RelativeTileOverlay extends Overlay
             }
         }
     }
+
 }
