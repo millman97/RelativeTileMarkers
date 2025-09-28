@@ -31,14 +31,14 @@ public class RelativeTileOverlay extends Overlay
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        drawRelativeTiles(graphics, config.tilesA(), config.fillColorA(), config.fillAlphaA(), config.borderColorA(), config.borderWidthA(), config.drawOutlineA(), config.useTrueTileA());
-        drawRelativeTiles(graphics, config.tilesB(), config.fillColorB(), config.fillAlphaB(), config.borderColorB(), config.borderWidthB(), config.drawOutlineB(), config.useTrueTileB());
-        drawRelativeTiles(graphics, config.tilesC(), config.fillColorC(), config.fillAlphaC(), config.borderColorC(), config.borderWidthC(), config.drawOutlineC(), config.useTrueTileC());
+        drawRelativeTiles(graphics, config.tilesA(), config.fillColorA(), config.fillAlphaA(), config.borderColorA(), config.borderAlphaA(), config.borderWidthA(), config.drawOutlineA(), config.useTrueTileA());
+        drawRelativeTiles(graphics, config.tilesB(), config.fillColorB(), config.fillAlphaB(), config.borderColorB(), config.borderAlphaB(), config.borderWidthB(), config.drawOutlineB(), config.useTrueTileB());
+        drawRelativeTiles(graphics, config.tilesC(), config.fillColorC(), config.fillAlphaC(), config.borderColorC(), config.borderAlphaC(), config.borderWidthC(), config.drawOutlineC(), config.useTrueTileC());
 
         return null;
     }
 
-    private void drawRelativeTiles(Graphics2D graphics, String input, Color fill, int fillAlpha, Color border, double borderWidth, boolean drawOutline, boolean useTrueTile)
+    private void drawRelativeTiles(Graphics2D graphics, String input, Color fill, int fillAlpha, Color border, int borderAlpha, double borderWidth, boolean drawOutline, boolean useTrueTile)
     {
         if (input == null || input.isEmpty())
         {
@@ -72,9 +72,10 @@ public class RelativeTileOverlay extends Overlay
                 graphics.fill(poly);
             }
 
-            if (drawOutline && border != null)
+            if (drawOutline && border != null && borderAlpha > 0)
             {
-                graphics.setColor(border);
+                Color alphaBorder = new Color(border.getRed(), border.getGreen(), border.getBlue(), borderAlpha);
+                graphics.setColor(alphaBorder);
                 graphics.setStroke(new BasicStroke((float) borderWidth));
                 graphics.draw(poly);
             }

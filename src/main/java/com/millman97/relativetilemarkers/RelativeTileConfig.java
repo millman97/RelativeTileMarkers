@@ -71,6 +71,17 @@ public interface RelativeTileConfig extends Config
     )
     default int fillAlphaA() { return 100; }
 
+    @Range(max = 255)
+    @Alpha
+    @ConfigItem(
+            keyName = "borderAlphaA",
+            name = "Border Transparency A",
+            description = "Transparency of the tile border color for Set A (0 = fully transparent, 255 = fully opaque)",
+            position = 7,
+            section = sectionA
+    )
+    default int borderAlphaA() { return 255; }
+
     // --- Section B ---
     @ConfigSection(
             name = "Tile Marker Set B",
@@ -136,6 +147,17 @@ public interface RelativeTileConfig extends Config
     )
     default int fillAlphaB() { return 100; }
 
+    @Range(max = 255)
+    @Alpha
+    @ConfigItem(
+            keyName = "borderAlphaB",
+            name = "Border Transparency B",
+            description = "Transparency of the tile border color for Set B (0 = fully transparent, 255 = fully opaque)",
+            position = 7,
+            section = sectionB
+    )
+    default int borderAlphaB() { return 255; }
+
     // --- Section C ---
     @ConfigSection(
             name = "Tile Marker Set C",
@@ -200,6 +222,17 @@ public interface RelativeTileConfig extends Config
             section = sectionC
     )
     default int fillAlphaC() { return 100; }
+
+    @Range(max = 255)
+    @Alpha
+    @ConfigItem(
+            keyName = "borderAlphaC",
+            name = "Border Transparency C",
+            description = "Transparency of the tile border color for Set C (0 = fully transparent, 255 = fully opaque)",
+            position = 7,
+            section = sectionC
+    )
+    default int borderAlphaC() { return 255; }
 
     @ConfigItem(
             keyName = "useTrueTileA",
