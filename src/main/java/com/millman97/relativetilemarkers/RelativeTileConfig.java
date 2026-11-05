@@ -260,6 +260,33 @@ public interface RelativeTileConfig extends Config
     )
     default boolean useTrueTileC() { return false; }
 
+    @ConfigItem(
+            keyName = "hideBlockedA",
+            name = "Hide Blocked Tiles A",
+            description = "Don't draw tiles you can't stand on (walls, objects, void) for set A",
+            section = sectionA,
+            position = 8
+    )
+    default boolean hideBlockedA() { return false; }
+
+    @ConfigItem(
+            keyName = "hideBlockedB",
+            name = "Hide Blocked Tiles B",
+            description = "Don't draw tiles you can't stand on (walls, objects, void) for set B",
+            section = sectionB,
+            position = 8
+    )
+    default boolean hideBlockedB() { return false; }
+
+    @ConfigItem(
+            keyName = "hideBlockedC",
+            name = "Hide Blocked Tiles C",
+            description = "Don't draw tiles you can't stand on (walls, objects, void) for set C",
+            section = sectionC,
+            position = 8
+    )
+    default boolean hideBlockedC() { return false; }
+
 }
 
 

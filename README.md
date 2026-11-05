@@ -20,6 +20,7 @@ All tile positions are user-defined and not dynamically placed or adjusted by th
     - Tile inputs
     - Fill color and transparency
     - Outline color and thickness
+    - Hide tiles you can't stand on (walls, objects, void)
 
 ---
 
